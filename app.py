@@ -5,8 +5,10 @@ import re
 import secrets
 import threading
 import uuid
+import os
 from io import BytesIO
 from urllib.parse import quote_plus
+from dotenv import load_dotenv
 
 # Flask and related packages
 from flask import (
@@ -21,8 +23,6 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 
 # SQLAlchemy components
 from sqlalchemy import func
-from sqlalchemy.pool import QueuePool
-from sqlalchemy.dialects import postgresql
 
 # Password handling
 from argon2 import PasswordHasher
@@ -35,6 +35,9 @@ import requests
 # Custom modules
 import reqmod.imagehandler as ih  # proprietary file
 import reqmod.emailer as email    # proprietary file
+
+# Load environment variables
+load_dotenv()
 
 #logger
 class CustomFormatter(logging.Formatter):
@@ -50,6 +53,7 @@ file_handler.setFormatter(CustomFormatter('[%(levelname)s][%(timestamp)d]: %(mes
 logger.addHandler(file_handler)
 #define variables
 app = Flask(__name__)
+app.secret_key = os.getenv('FLASK_SECRET_KEY', 'dev-key-change-in-production')
 todelete = [] 
 keys = {} #userkeys
 adminkeys = {} #adminkeys
@@ -75,16 +79,16 @@ limiter = Limiter(
     storage_uri="memory://",
 )
 
-db_pwd = quote_plus('@ghastmuffin!1')
+db_pwd = quote_plus(os.getenv('DB_PASSWORD', 'your_password_here'))
 # Replace the PostgreSQL connection strings with SQL Server connection strings
 
 # SQL Server connection settings
-server = 'adsforafrica-server.database.windows.net'
-port = '1433'
-database = 'ads'
-users_database = 'userstorage'
-username = 'adsforafrica-server-admin'
-password = '@ghastmuffin!1'  # Your actual password
+server = os.getenv('DB_SERVER', 'adsforafrica-server.database.windows.net')
+port = os.getenv('DB_PORT', '1433')
+database = os.getenv('DB_NAME', 'ads')
+users_database = os.getenv('DB_USERS_NAME', 'userstorage')
+username = os.getenv('DB_USERNAME', 'adsforafrica-server-admin')
+password = os.getenv('DB_PASSWORD', 'your_password_here')
 
 # Create the connection strings
 connection_string = f"mssql+pyodbc://{username}:{quote_plus(password)}@{server}:{port}/{database}?driver=ODBC+Driver+17+for+SQL+Server"
@@ -149,7 +153,7 @@ class User(db.Model):
     created_at = db.Column(db.TIMESTAMP(timezone=True), default=datetime.datetime.now)
     email = db.Column(db.String(255), unique=True)  # Ensure email is unique
     emailverified = db.Column(db.Boolean, default=False)
-    roles = db.Column(postgresql.ENUM('advertiser', 'Implementer', 'Volunteer', 'Developer', name='user_role'), nullable=False)
+    roles = db.Column(db.String(20), nullable=False)  # Changed from postgresql.ENUM to String for SQL Server
 
 
 
