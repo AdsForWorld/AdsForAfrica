@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ads For Africa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <script src="{{ url_for('static', filename='notification.js') }}"></script>
+    <header> 
+        <h2>Register Ad</h2> 
+        <div>
+            <a href="{{{url_for()}}}" class="cur">Home</a>
+            <a href="{{url_for('about')}}">About Us</a>
+            <a href="{{url_for('devlog')}}">Devlog</a>
+            <a href="{{url_for('login')}}">Login</a>
+            <a href="{{url_for('signup')}}">Sign up</a>
+            <a href="{{url_for('volunteer')}}">Volunteer</a>
+            <a href="{{url_for('apply')}}">Apply</a>
+            <a href="#">Our Team</a>
+        </div>
+      </header>
+    <!--Add code here-->
+    <h1>Register Ads</h1>
+    <p>Welcome to the AD registry portal, {username}. Please fill out the form below:</p>
+    <form method="post" action="{{ url_for('register') }}">
+        <input type="hidden" name="valid" id="valid" value="{{ validformid }}">
+        <input type="hidden" name="dispcnt" id="dispcnt" value="20">
+        <label for="adName">Ad Name:</label><br>
+        <input type="text" id="adName" name="adName" required><br><br>
+        <label for="adDescription">Ad Description:</label><br>
+        <input type="text" id="adDescription" name="adDescription" required><br><br>
+        <label for="clickthrough_url">Clickthrough URL:</label><br>
+        <input type="url" id="clickthrough_url" name="clickthrough_url" required><br><br>
+
+        <label for="campaignid">CampaignID:</label><br>
+        <input type="text" id="campaignid" name="campaignid"><br><br>
+        <label for="tags">Tags: (optional, helps determine who to show ads to) (#test,#test2,#test3 etc.) add period at end to finish.</label><br>
+        <input type="text" id="tags" name="tags"><br><br>
+        
+        <label for="adImage">Assets (Display):</label><br>
+        <input type="file" id="adImage" name="adImage" required><br><br>
+
+        <input type="checkbox" id="confirmres" name="confirmres" value="confirmres" required> I confirm that I have the right to use these assets<br><br>
+        <input type="checkbox" id="conage" name="conage" value="conage" required> I confirm that I am 18 or more years old<br><br>
+        <input type="checkbox" id="conabuse" name="conabuse" value="conabuse" required> I confirm that I am not/will not abuse this form/service<br><br>
+        <input type="checkbox" id="conusa" name="conusa" value="conusa" required> I confirm that I am a resident of the United States of America, or my buisness is sourced from California.<br><br>
+        <input type="checkbox" id="contos" name="contos" value="contos" required> I confirm that I agree to other terms and conditions<br><br>
+        <p>Hey! Before you submit, by checking these you are signing a digital contract to uphold and be truthful about your answers. Any diviation or lying may result in legal action. Learn more below or at legal@adsforafrica.me if you're not planning on breaking any of those, don't worry! You don't need to give this a second thought. Thanks for using us!</p>
+        <a href="{{ url_for('disclosure') }}" target="_blank">Read about your rights regarding electronic records and signatures</a><br><br>
+        <input type="submit" value="Submit for Review (1-2 Buisness Days)">
+    </form>
+    
+</body>
+</html>

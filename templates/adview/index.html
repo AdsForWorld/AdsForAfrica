@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ads for africa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='adreview/styles.css') }}">
+</head>
+<body>
+    <script src="{{ url_for('static', filename='adreview/main.js') }}" defer></script>
+    <h1>Welcome, {{modname}}</h1>
+    <p class="right">0 verdicts today</p>
+    <p>redirect: {{clickthrough_url}}</p>
+    <p>issuer: {{createdby}}</p>
+    <p>campaignid:{{campaignid}}</p>
+    <p>adid:{{adid}}</p>
+    <p>tags:{{tags}}</p>
+    <img src="{{image_url}}" alt="728x90"> <br>
+    <button onclick="window.location.replace('')">allow AD</button>
+    <button onclick="deny()">deny AD</button> <br> <br>
+    <button onclick="revert()">change verdict of previous AD</button>
+</body>
+</html>

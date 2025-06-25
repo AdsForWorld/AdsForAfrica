@@ -1,0 +1,8 @@
+body{
+    background-color: grey;
+}
+.right{
+    position: absolute;
+    right: 0px;
+    top: 1vh;
+}

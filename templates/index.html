@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ads For Africa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <script src="{{ url_for('static', filename='notification.js') }}"></script>
+    <header> 
+        <h2>Ads For Africa</h2> 
+        <div>
+            <a href="#" class="cur">Home</a>
+            <a href="{{url_for('about')}}">About Us</a>
+            <a href="{{url_for('devlog')}}">Devlog</a>
+            <a href="{{url_for('login')}}">Login</a>
+            <a href="{{url_for('signup')}}">Sign up</a>
+            <a href="{{url_for('volunteer')}}">Volunteer</a>
+            <a href="{{url_for('apply')}}">Apply</a>
+            <a href="#">Our Team</a>
+            <p style="right: 0px;">Welcome, {{user}}!</p>
+            
+        </div>
+      </header>
+    <h1>ADS FOR AFRICA</h1>
+    <p>Welcome to the Ads for Africa project, currently we're in a closed beta but you can still check out some of our devlogs</p>
+    <h2>Partners</h2>
+    <p>here are some charities your money goes to! (CURRENTLY BI-MONTHLY)</p>
+    <div class="partners">
+        <div class="container">        
+            <p>IFRC</p>
+            <a href="https://donation.ifrc.org/?campaign=7e7adb56-7b45-ed11-a2d8-005056010028"><img height="200" width="200" src="{{ url_for('static', filename='assets/partners_logo/donatees/IFRC.webp') }}" alt="International Federation of Red Cross and Red Crescent Societies"></a>
+        </div>
+        <div class="container">
+            <p>Hunger Project</p>
+            <a href="https://thp.org/"><img height="200" width="200" src="{{ url_for('static', filename='assets/partners_logo/donatees/hungerproj.png') }}" alt="Hunger Project"></a>
+        </div>     
+        <div class="container">
+            <p>UNICEF</p>
+            <a href="https://www.unicef.org/"><img src="{{ url_for('static', filename='assets/partners_logo/donatees/unicef.png') }}" alt="UNICEF (LoGo 4.0 Compliant)"></a>
+        </div>
+        
+    </div>
+    <p>WITH ❤️ FROM SF</p>
+    <p>ABOUT THE SERVER: Data residency: US-WEST-2 (Los Angeles, datacenter-xact: LA HABRA, CALIFORNIA). This page is served by Korea, Republic of: Central. (Seoul, servr-xact: CHUNCHEON, ROK).</p>
+</body>
+</html>

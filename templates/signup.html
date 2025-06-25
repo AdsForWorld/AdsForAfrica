@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <script src="{{ url_for('static', filename='notification.js') }}"></script>
+    <header> 
+        <h2>Signup</h2> 
+        <div>
+          <a href="{{url_for('index')}}" >Home</a>
+          <a href="{{url_for('about')}}">About Us</a>
+          <a href="{{url_for('devlog')}}">Devlog</a>
+          <a href="{{url_for('login')}}">Login</a>
+          <a href="_blank" class="cur">Sign up</a>
+          <a href="{{url_for('volunteer')}}">Volunteer</a>
+          <a href="{{url_for('apply')}}">Apply</a>
+          <a href="#">Our Team</a>
+        </div>
+      </header>
+    <script>
+var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+    document.getElementById('su').disabled = false;
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+    document.getElementById('su').disabled = true;
+  }
+}
+    </script>
+    <form action="{{url_for('createuser')}}" method="POST">
+        <p>BETA: Please note that this form is designed to create your account. We will reach out to finalize it, this is a temporary method of doing things to prevent bot spamming. See our devlog page to learn more. (it should take around 1-2 buisness days for us to reach out.)</p>
+        <input type="hidden" name="valid" id="valid" value="{{ validformid }}">
+        <label for="reason">What type of account:</label>
+        <select id="reason" name="reason">
+            <option value="Developer">Developer</option>
+            <option value="Volunteer">Volunteer</option>
+            <option value="Implementer">Implementer</option>
+            <option value="advertiser">Advertiser</option>
+        </select> <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"> <br>
+        <label for="username">What should we call you?</label>
+        <input type="text" id="username" name="username"> <br>
+        <label >Password:
+            <input name="password" id="password" type="password" onkeyup='check();' />
+        </label> <br>
+        <label for="password">Confirm Password:
+            <input type="password" name="confirm_password" id="confirm_password"  onkeyup='check();' />
+            <span id='message'></span>
+        </label> <br>
+        <input type="submit" value="Sign Up" id="su">
+      </form>
+</body>
+</html>

@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /backend/
+Disallow: /reviewer/
+Disallow: /register/
+Disallow: /accessleasekey
+Disallow: /getallads
+Disallow: /uptime/
+Disallow: /impressions/
+Disallow: /click/
+Disallow: /show/

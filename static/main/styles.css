@@ -1,0 +1,27 @@
+.partners {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.container {
+  display: inline-block;
+  margin: 0 10px;
+  text-align: center;
+  width: 30%; /* Adjust as needed */
+}
+
+/* For mobile responsiveness, you can add: */
+@media (max-width: 768px) {
+  .partners {
+    flex-direction: column;
+  }
+  
+  .container {
+    width: 90%;
+    margin: 10px 0;
+  }
+}

@@ -1,0 +1,4 @@
+Welcome Message:This is a notification:0
+Status Update:Your order has shipped:1
+Warning:Your account is about to expire:2
+Critical:System maintenance in 5 minutes:3
