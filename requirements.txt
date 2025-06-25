@@ -2,7 +2,6 @@ Flask
 Flask-Limiter
 Flask-SQLAlchemy
 SQLAlchemy
-psycopg2-binary
 argon2-cffi
 Pillow
 Flask-Login

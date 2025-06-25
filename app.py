@@ -23,8 +23,6 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from sqlalchemy import func
 from sqlalchemy.pool import QueuePool
 from sqlalchemy.dialects import postgresql
-import psycopg2
-from sqlalchemy.dialects import postgresql
 
 # Password handling
 from argon2 import PasswordHasher
@@ -79,7 +77,6 @@ limiter = Limiter(
 
 db_pwd = quote_plus('@ghastmuffin!1')
 # Replace the PostgreSQL connection strings with SQL Server connection strings
-from urllib.parse import quote_plus
 
 # SQL Server connection settings
 server = 'adsforafrica-server.database.windows.net'
@@ -525,7 +522,7 @@ def createuser():
 
 
 
-app.route('/getallads', methods=['GET'])
+@app.route('/getallads', methods=['GET'])
 def getallads():
     """
     Debug/Backend function to view all ads + data
