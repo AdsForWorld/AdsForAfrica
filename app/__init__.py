@@ -62,6 +62,9 @@ def create_app(config_name=None):
     login_manager.init_app(app)
     limiter.init_app(app)
     
+    # Import models after db initialization
+    from . import models
+    
     # Register blueprints
     from .main import bp as main_bp
     app.register_blueprint(main_bp)

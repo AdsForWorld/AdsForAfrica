@@ -3,9 +3,9 @@ import logging
 import uuid
 from flask import Blueprint, render_template, request, redirect, url_for, make_response, jsonify
 from argon2.exceptions import VerifyMismatchError
-from app import ph, logger, adminkeys, userkeys, keyadmins, validform, db
-from app.models import User
-from app.utils import dateunix
+from .. import ph, logger, adminkeys, userkeys, keyadmins, validform, db, limiter
+from ..models import User
+from ..utils import dateunix
 
 bp = Blueprint('auth', __name__)
 
@@ -34,10 +34,9 @@ def verifyemail(id):
     return "Email Verified! Please await manual approval. You will receive an email when your account is approved."
 
 @bp.route('/credentialschk', methods=['POST'])
+@limiter.limit("30 per minute")
 def chkcreds():
     """Backend: Checks if the credentials are valid"""
-    from app import limiter
-    
     username = request.form.get('username')
     password = request.form.get('password')
     validchk = request.form.get('valid')

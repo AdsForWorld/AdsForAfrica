@@ -8,9 +8,9 @@ from flask import Blueprint, request, jsonify
 from sqlalchemy import func
 from PIL import Image
 
-from app import db, logger, limiter, keys, startat
-from app.models import Ad, User
-from app.utils import dateunix
+from .. import db, logger, limiter, keys, startat
+from ..models import Ad, User
+from ..utils import dateunix
 import reqmod.imagehandler as ih
 
 bp = Blueprint('api', __name__)

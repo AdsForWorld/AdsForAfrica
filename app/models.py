@@ -1,6 +1,9 @@
 import datetime
 import uuid
-from app import db
+from flask_sqlalchemy import SQLAlchemy
+
+# Import db from the app package
+from . import db
 
 class Ad(db.Model):
     id = db.Column(db.Integer, primary_key=True)

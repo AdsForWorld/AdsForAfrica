@@ -1,8 +1,8 @@
 import logging
 from flask import Blueprint, request, jsonify, redirect, render_template, url_for
-from app import db, logger, limiter, todelete
-from app.models import Ad
-from app.utils import dateunix
+from .. import db, logger, limiter, todelete
+from ..models import Ad
+from ..utils import dateunix
 
 bp = Blueprint('ads', __name__)
 
@@ -60,7 +60,9 @@ def checkadvalid(adid):
     if curdisp >= displays:
         # Import here to avoid circular imports
         import reqmod.emailer as email
-        from app import ecreds
+        from flask import current_app
+        
+        ecreds = current_app.config.get('EMAIL_CREDENTIALS')
         
         with open("messages/successad.txt", "r") as f:
             body = f.read()

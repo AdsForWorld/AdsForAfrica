@@ -3,9 +3,9 @@ import logging
 import uuid
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from argon2.exceptions import VerifyMismatchError
-from app import db, logger, ph, adminkeys, keyadmins, userkeys, validform
-from app.models import Ad, User
-from app.utils import dateunix
+from .. import db, logger, ph, adminkeys, keyadmins, userkeys, validform
+from ..models import Ad, User
+from ..utils import dateunix
 
 bp = Blueprint('admin', __name__)
 
