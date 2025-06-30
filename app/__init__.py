@@ -39,9 +39,16 @@ class CustomFormatter(logging.Formatter):
 
 logger = logging.getLogger('adsforafrica')
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler(f'reqmod/logging_storage/access_{datetime.date.today().strftime("%m-%d-%Y")}.log')
-file_handler.setFormatter(CustomFormatter('[%(levelname)s][%(timestamp)d]: %(message)s'))
-logger.addHandler(file_handler)
+if os.path.isfile(f'reqmod/logging_storage/access_{datetime.date.today().strftime("%m-%d-%Y")}.log'):
+    file_handler = logging.FileHandler(f'reqmod/logging_storage/access_{datetime.date.today().strftime("%m-%d-%-Y")}.log')
+    file_handler.setFormatter(CustomFormatter('[%(levelname)s][%(timestamp)d]: %(message)s'))
+    logger.addHandler(file_handler)
+else:
+    os.makedirs('reqmod/logging_storage', exist_ok=True)
+    file_handler = logging.FileHandler(f'reqmod/logging_storage/access_{datetime.date.today().strftime("%m-%d-%-Y")}.log')
+    file_handler.setFormatter(CustomFormatter('[%(levelname)s][%(timestamp)d]: %(message)s'))
+    logger.addHandler(file_handler)
+
 
 def create_app(config_name=None):
     app = Flask(__name__)
@@ -51,11 +58,12 @@ def create_app(config_name=None):
         config_name = os.getenv('FLASK_CONFIG', 'default')
     
     from config import config
-    app.config.from_object(config[config_name])
+    config_obj = config[config_name]()
+    app.config.from_object(config_obj)
     
     # Set database URIs manually since they're properties
-    app.config['SQLALCHEMY_DATABASE_URI'] = config[config_name]().SQLALCHEMY_DATABASE_URI
-    app.config['SQLALCHEMY_BINDS'] = {'users': config[config_name]().USERS_DATABASE_URI}
+    app.config['SQLALCHEMY_DATABASE_URI'] = config_obj.SQLALCHEMY_DATABASE_URI
+    app.config['SQLALCHEMY_BINDS'] = {'users': config_obj.USERS_DATABASE_URI}
     
     # Initialize extensions with app
     db.init_app(app)

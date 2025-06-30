@@ -11,5 +11,5 @@ boto3
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
-pyodbc
+psycopg2-binary
 python-dotenv
