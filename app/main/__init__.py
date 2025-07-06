@@ -26,6 +26,11 @@ def about():
 def volunteer():
     return "Volunteering page is currently unavailable. Please check back later."
 
+@bp.route('/ourteam')
+def ourteam():
+    """Serves the our team page"""
+    return render_template('ourteam.html')
+
 @bp.route('/apply')
 def apply():
     return "Apply page is currently unavailable. Please check back later. Available positions: volunteer (moderator, developer, coordinator), serverless hosting (using your computer to power SOME of our compute capabilities.)"
