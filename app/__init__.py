@@ -50,6 +50,7 @@ else:
     logger.addHandler(file_handler)
 
 
+
 def create_app(config_name=None):
     # Set custom template and static folders to parent directory
     import os
@@ -110,6 +111,10 @@ def create_app(config_name=None):
         if not request.environ.get('SERVER_PROTOCOL').startswith('HTTP/1.') and not request.environ.get('SERVER_PROTOCOL').startswith('HTTP/2'):
             app.logger.warning(f"Invalid HTTP version: {request.environ.get('SERVER_PROTOCOL')} from IP: {request.remote_addr}")
             abort(400)
+    
+    @login_manager.user_loader
+    def load_user(user_id):
+        return models.User.get(user_id)
 
     @app.before_request
     def log_request_info():

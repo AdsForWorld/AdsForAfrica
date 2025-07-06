@@ -12,20 +12,20 @@
     <header> 
         <h2>Register Ad</h2> 
         <div>
-            <a href="{{{url_for()}}}" class="cur">Home</a>
-            <a href="{{url_for('about')}}">About Us</a>
-            <a href="{{url_for('devlog')}}">Devlog</a>
-            <a href="{{url_for('login')}}">Login</a>
-            <a href="{{url_for('signup')}}">Sign up</a>
-            <a href="{{url_for('volunteer')}}">Volunteer</a>
-            <a href="{{url_for('apply')}}">Apply</a>
+            <a href="{{url_for('main.index')}}" class="cur">Home</a>
+            <a href="{{url_for('main.about')}}">About Us</a>
+            <a href="{{url_for('main.devlog')}}">Devlog</a>
+            <a href="{{url_for('auth.login')}}" >Login</a>
+            <a href="{{url_for('auth.signup')}}">Sign up</a>
+            <a href="{{url_for('main.volunteer')}}">Volunteer</a>
+            <a href="{{url_for('main.apply')}}">Apply</a>
             <a href="#">Our Team</a>
         </div>
       </header>
     <!--Add code here-->
     <h1>Register Ads</h1>
     <p>Welcome to the AD registry portal, {username}. Please fill out the form below:</p>
-    <form method="post" action="{{ url_for('register') }}">
+    <form method="post" action="{{ url_for('api.register') }}">
         <input type="hidden" name="valid" id="valid" value="{{ validformid }}">
         <input type="hidden" name="dispcnt" id="dispcnt" value="20">
         <label for="adName">Ad Name:</label><br>

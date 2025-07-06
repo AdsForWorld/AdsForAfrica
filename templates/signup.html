@@ -11,13 +11,13 @@
     <header> 
         <h2>Signup</h2> 
         <div>
-          <a href="{{url_for('index')}}" >Home</a>
-          <a href="{{url_for('about')}}">About Us</a>
-          <a href="{{url_for('devlog')}}">Devlog</a>
-          <a href="{{url_for('login')}}">Login</a>
+          <a href="{{url_for('main.index')}}" >Home</a>
+          <a href="{{url_for('main.about')}}">About Us</a>
+          <a href="{{url_for('main.devlog')}}">Devlog</a>
+          <a href="{{url_for('auth.login')}}" >Login</a>
           <a href="_blank" class="cur">Sign up</a>
-          <a href="{{url_for('volunteer')}}">Volunteer</a>
-          <a href="{{url_for('apply')}}">Apply</a>
+          <a href="{{url_for('main.volunteer')}}">Volunteer</a>
+          <a href="{{url_for('main.apply')}}">Apply</a>
           <a href="#">Our Team</a>
         </div>
       </header>
@@ -35,7 +35,7 @@ var check = function() {
   }
 }
     </script>
-    <form action="{{url_for('createuser')}}" method="POST">
+    <form action="{{url_for('auth.createuser')}}" method="POST">
         <p>BETA: Please note that this form is designed to create your account. We will reach out to finalize it, this is a temporary method of doing things to prevent bot spamming. See our devlog page to learn more. (it should take around 1-2 buisness days for us to reach out.)</p>
         <input type="hidden" name="valid" id="valid" value="{{ validformid }}">
         <label for="reason">What type of account:</label>

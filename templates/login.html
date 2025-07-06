@@ -10,15 +10,15 @@
     <header> 
         <h2>Login</h2> 
         <div>
-            <a href="{{url_for('index')}}" >Home</a>
-            <a href="{{url_for('about')}}">About Us</a>
-            <a href="{{url_for('devlog')}}">Devlog</a>
-            <a href="{{url_for('login')}}" class="cur">Login</a>
+            <a href="{{url_for('main.index')}}" >Home</a>
+            <a href="{{url_for('main.about')}}">About Us</a>
+            <a href="{{url_for('main.devlog')}}">Devlog</a>
+            <a href="{{url_for('auth.login')}}" class="cur">Login</a>
             <a href="#">Our Team</a>
         </div>
       </header>
     <h1>Login</h1>
-    <form method="post" action="{{ url_for('chkcreds') }}">
+    <form method="post" action="{{ url_for('auth.chkcreds') }}">
         <input type="hidden" name="valid" id="valid" value="{{ validformid }}">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
