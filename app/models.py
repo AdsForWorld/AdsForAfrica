@@ -38,3 +38,27 @@ class User(db.Model):
     email = db.Column(db.String(255), unique=True)
     emailverified = db.Column(db.Boolean, default=False)
     roles = db.Column(db.String(20), nullable=False)
+
+    @staticmethod
+    def get(user_id):
+        """Get user by ID for Flask-Login"""
+        return User.query.get(int(user_id))
+    
+    def get_id(self):
+        """Return user ID as string for Flask-Login"""
+        return str(self.id)
+    
+    @property
+    def is_authenticated(self):
+        """Check if user is authenticated"""
+        return True
+    
+    @property
+    def is_active(self):
+        """Check if user is active"""
+        return True
+    
+    @property
+    def is_anonymous(self):
+        """Check if user is anonymous"""
+        return False

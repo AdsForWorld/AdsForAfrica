@@ -451,6 +451,7 @@ def chkcreds():
     validform.remove(validchk)
 
     user = User.query.filter_by(username=username).first()
+    print(user)
     if user is None:
         return f"User is Nonetype. Click here to retry. <a href='{url_for('login')}'>click here to redirect</a> OR signup <a href='{url_for('signup')}'>here</a>"
     else:

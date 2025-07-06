@@ -8,6 +8,12 @@ from app import create_app, db
 import reqmod.emailer as email
 import logging
 
+_VERSION = "1.0.1"
+_SOURCE = "GITHUB"
+_SIGN = "LEVI-TAESON-KIM-BROWN-AFA-SAN-FRANCISCO"
+_SIGNDATE = "2025-07-06"
+_SERVER = "CHUNCHEON-SEOUL" #intended recipient. Usage on other servers is restricted
+
 # Try to initialize email credentials
 try:
     ecreds = email.credentials()

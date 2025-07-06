@@ -50,6 +50,8 @@ def chkcreds():
     user = User.query.filter_by(username=username).first()
     if user is None:
         return f"User is Nonetype. Click here to retry. <a href='{url_for('auth.login')}'>click here to redirect</a> OR signup <a href='{url_for('auth.signup')}'>here</a>"
+    elif len(user) < 1:
+        return f"Woah there buster! You've uncovered a bountiful error. Report this to error@adsforafrica.me for 10$ reward, USERERRORtmu-{len(user)}TooManyUsers;DB=LA-HABRA;SERVEDBY:LOCALE-IDENTIFIER-NOT-PRESENT-PROBABLY-CHUNCHEON-SEOUL.misconfigmisconfig.misconfig.misconfig. fix ts seoul 😭😭"
     else:
         try:
             ph.verify(user.hashpwd, password)
