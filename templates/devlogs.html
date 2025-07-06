@@ -1,26 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Development Logs</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <header> 
-        <h2>Devlog</h2> 
-        <div>
-            <a href="{{url_for('main.index')}}" >Home</a>
-            <a href="{{url_for('main.about')}}">About Us</a>
-            <a href="#" class="cur">Devlog</a>
-            <a href="{{url_for('auth.login')}}" >Login</a>
-            <a href="{{url_for('main.volunteer')}}">Volunteer</a>
-            <a href="{{url_for('main.apply')}}">Apply</a>
-            <a href="{{url_for('main.ourteam')}}">Our Team</a>
-        </div>
-      </header>
+{% extends "base.html" %}
+
+{% block title %}Development Logs - Ads For Africa{% endblock %}
+
+{% block header_title %}Devlog{% endblock %}
+
+{% block content %}
     <h1>Welcome to the Development logs for the AFA project.</h1>
     <p>Here you can find all the information about the development of the Ads for Africa project.</p>
     <div></div>
-</body>
-</html>
+{% endblock %}

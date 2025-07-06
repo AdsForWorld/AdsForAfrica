@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ads For Africa</title>
+{% extends "base.html" %}
+
+{% block title %}Ads For Africa - Home{% endblock %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='main/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <script src="{{ url_for('static', filename='notification.js') }}"></script>
-    <header> 
-        <h2>Ads For Africa</h2> 
-        <div>
-            <a href="#" class="cur">Home</a>
-            <a href="{{url_for('main.about')}}">About Us</a>
-            <a href="{{url_for('main.devlog')}}">Devlog</a>
-            <a href="{{url_for('auth.login')}}" >Login</a>
-            <a href="{{url_for('auth.signup')}}">Sign up</a>
-            <a href="{{url_for('main.volunteer')}}">Volunteer</a>
-            <a href="{{url_for('main.apply')}}">Apply</a>
-            <a href="{{url_for('main.ourteam')}}">Our Team</a>
-            <p style="right: 0px;">Welcome, {{user}}!</p>
-            
-        </div>
-      </header>
+{% endblock %}
+
+{% block content %}
     <h1>ADS FOR AFRICA</h1>
     <p>Welcome to the Ads for Africa project, currently we're in a closed beta but you can still check out some of our devlogs</p>
+    
     <h2>Partners</h2>
     <p>here are some charities your money goes to! (CURRENTLY BI-MONTHLY)</p>
     <div class="partners">
@@ -41,9 +25,12 @@
             <p>UNICEF</p>
             <a href="https://www.unicef.org/"><img src="{{ url_for('static', filename='assets/partners_logo/donatees/unicef.png') }}" alt="UNICEF (LoGo 4.0 Compliant)"></a>
         </div>
-        
     </div>
+    
     <p>WITH ❤️ FROM SF</p>
     <p>ABOUT THE SERVER: Data residency: US-WEST-2 (Los Angeles, datacenter-xact: LA HABRA, CALIFORNIA). This page is served by Korea, Republic of: Central. (Seoul, servr-xact: CHUNCHEON, ROK).</p>
-</body>
-</html>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='notification.js') }}"></script>
+{% endblock %}

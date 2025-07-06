@@ -1,40 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup Form</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <script src="{{ url_for('static', filename='notification.js') }}"></script>
-    <header> 
-        <h2>Signup</h2> 
-        <div>
-          <a href="{{url_for('main.index')}}" >Home</a>
-          <a href="{{url_for('main.about')}}">About Us</a>
-          <a href="{{url_for('main.devlog')}}">Devlog</a>
-          <a href="{{url_for('auth.login')}}" >Login</a>
-          <a href="_blank" class="cur">Sign up</a>
-          <a href="{{url_for('main.volunteer')}}">Volunteer</a>
-          <a href="{{url_for('main.apply')}}">Apply</a>
-          <a href="{{url_for('main.ourteam')}}">Our Team</a>
-        </div>
-      </header>
-    <script>
-var check = function() {
-  if (document.getElementById('password').value ==
-    document.getElementById('confirm_password').value) {
-    document.getElementById('message').style.color = 'green';
-    document.getElementById('message').innerHTML = 'matching';
-    document.getElementById('su').disabled = false;
-  } else {
-    document.getElementById('message').style.color = 'red';
-    document.getElementById('message').innerHTML = 'not matching';
-    document.getElementById('su').disabled = true;
-  }
-}
-    </script>
+{% extends "base.html" %}
+
+{% block title %}Sign Up - Ads For Africa{% endblock %}
+
+{% block header_title %}Signup{% endblock %}
+
+{% block content %}
     <form action="{{url_for('auth.createuser')}}" method="POST">
         <p>BETA: Please note that this form is designed to create your account. We will reach out to finalize it, this is a temporary method of doing things to prevent bot spamming. See our devlog page to learn more. (it should take around 1-2 buisness days for us to reach out.)</p>
         <input type="hidden" name="valid" id="valid" value="{{ validformid }}">
@@ -58,5 +28,22 @@ var check = function() {
         </label> <br>
         <input type="submit" value="Sign Up" id="su">
       </form>
-</body>
-</html>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='notification.js') }}"></script>
+    <script>
+var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+    document.getElementById('su').disabled = false;
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+    document.getElementById('su').disabled = true;
+  }
+}
+    </script>
+{% endblock %}

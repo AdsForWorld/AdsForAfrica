@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ads For Africa</title>
+{% extends "base.html" %}
+
+{% block title %}Register Ad - Ads For Africa{% endblock %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='main/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <script src="{{ url_for('static', filename='notification.js') }}"></script>
-    <header> 
-        <h2>Register Ad</h2> 
-        <div>
-            <a href="{{url_for('main.index')}}" class="cur">Home</a>
-            <a href="{{url_for('main.about')}}">About Us</a>
-            <a href="{{url_for('main.devlog')}}">Devlog</a>
-            <a href="{{url_for('auth.login')}}" >Login</a>
-            <a href="{{url_for('auth.signup')}}">Sign up</a>
-            <a href="{{url_for('main.volunteer')}}">Volunteer</a>
-            <a href="{{url_for('main.apply')}}">Apply</a>
-            <a href="{{url_for('main.ourteam')}}">Our Team</a>
-        </div>
-      </header>
-    <!--Add code here-->
+{% endblock %}
+
+{% block header_title %}Register Ad{% endblock %}
+
+{% block content %}
     <h1>Register Ads</h1>
     <p>Welcome to the AD registry portal, {username}. Please fill out the form below:</p>
     <form method="post" action="{{ url_for('api.register') }}">
@@ -52,6 +38,8 @@
         <a href="{{ url_for('disclosure') }}" target="_blank">Read about your rights regarding electronic records and signatures</a><br><br>
         <input type="submit" value="Submit for Review (1-2 Buisness Days)">
     </form>
-    
-</body>
-</html>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='notification.js') }}"></script>
+{% endblock %}

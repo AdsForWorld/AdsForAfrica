@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <header> 
-        <h2>Login</h2> 
-        <div>
-            <a href="{{url_for('main.index')}}" >Home</a>
-            <a href="{{url_for('main.about')}}">About Us</a>
-            <a href="{{url_for('main.devlog')}}">Devlog</a>
-            <a href="{{url_for('auth.login')}}" class="cur">Login</a>
-            <a href="{{url_for('main.ourteam')}}">Our Team</a>
-        </div>
-      </header>
+{% extends "base.html" %}
+
+{% block title %}Login - Ads For Africa{% endblock %}
+
+{% block header_title %}Login{% endblock %}
+
+{% block content %}
     <h1>Login</h1>
     <form method="post" action="{{ url_for('auth.chkcreds') }}">
         <input type="hidden" name="valid" id="valid" value="{{ validformid }}">
@@ -28,5 +16,4 @@
         <br>
         <button type="submit">Login</button>
     </form>
-</body>
-</html>
+{% endblock %}

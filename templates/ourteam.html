@@ -1,66 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <header> 
-        <h2>Our Team</h2> 
-        <div>
-            <a href="{{url_for('main.index')}}" >Home</a>
-            <a href="{{url_for('main.about')}}">About Us</a>
-            <a href="{{url_for('main.devlog')}}">Devlog</a>
-            <a href="{{url_for('auth.login')}}" >Login</a>
-            <a href="#" class="cur">Our Team</a>
+{% extends "base.html" %}
+
+{% block title %}Our Team - Ads For Africa{% endblock %}
+
+{% block header_title %}Our Team{% endblock %}
+
+{% block content %}
+    <h1>Meet our Team</h1>
+    <div class="team">
+        <div class="container">
+            <img src="{{ url_for('static', filename='assets/team/1.jpg') }}" alt="Team Member 1">
+            <p>Levi Brown</p>
+            <p>Reigional Overseer: San Francisco (CA, USA), US-WEST</p>
+            <p>Reach out: <a href="mailto:levitkbrown@gmail.com">levitkbrown@gmail.com (Personal)</a><a href="mailto:levi@adsforafrica.me">levi@adsforafrica.me (AdsForAfrica)</a></p>
         </div>
-      </header>
-      <h1>Meet our Team</h1>
-        <div class="team">
-            <div class="container">
-                <img src="{{ url_for('static', filename='assets/team/1.jpg') }}" alt="Team Member 1">
-                <p>Levi Brown</p>
-                <p>Reigional Overseer: San Francisco (CA, USA), US-WEST</p>
-                <p>Reach out: <a href="mailto:levitkbrown@gmail.com">levitkbrown@gmail.com (Personal)</a><a href="mailto:levi@adsforafrica.me">levi@adsforafrica.me (AdsForAfrica)</a></p>
-            </div>
-            <div class="container">
-                <img src="{{ url_for('static', filename='assets/team/2.jpg') }}" alt="Team Member 2">
-                <p>Jane Doe</p>
-                <p>Reigional Overseer: Bangalore (India), ASIA</p>
-            </div>
-            <div class="container">
-                <img src="{{ url_for('static', filename='assets/team/3.jpg') }}" alt="Team Member 3">
-                <p>John Smith</p>
-                <p>Reigional Overseer: Amsterdam (Netherlands), EU (Note: Serves the RF)</p>
-            </div>
-            <div class="container">
-                <img src="{{ url_for('static', filename='assets/team/4.jpg') }}" alt="Team Member 4">
-                <p>Jane Smith</p>
-                <p>Coordinator: Cape Town (South Africa), AFRICA</p>
-            </div>
-        <div class="prods">
-            <div class="cont">
-                <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/azure.png') }}">
-                <p>Azure (saf-north), (West US 2)</p>
-            </div>
-            <div class="cont">
-                <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/digitalocean.png') }}">
-                <p>Digitalocean (SFO2), (BLR1)</p>
-            </div>
-            <div class="cont">
-                <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/namecheap.png') }}">
-                <p>Namecheap, adsforafrica.me</p>
-            </div>
-            <div class="cont">
-                <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/nginx.png') }}">
-                <p>nginx (engine-x), reverse proxy, static content</p>
-            </div>
-            <div class="cont">
-                <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/flask.png') }}">
-                <p>Flask, served behind Gunicorn</p>
-            </div>
+        <div class="container">
+            <img src="{{ url_for('static', filename='assets/team/2.jpg') }}" alt="Team Member 2">
+            <p>Jane Doe</p>
+            <p>Reigional Overseer: Bangalore (India), ASIA</p>
         </div>
-</body>
-</html>
+        <div class="container">
+            <img src="{{ url_for('static', filename='assets/team/3.jpg') }}" alt="Team Member 3">
+            <p>John Smith</p>
+            <p>Reigional Overseer: Amsterdam (Netherlands), EU (Note: Serves the RF)</p>
+        </div>
+        <div class="container">
+            <img src="{{ url_for('static', filename='assets/team/4.jpg') }}" alt="Team Member 4">
+            <p>Jane Smith</p>
+            <p>Coordinator: Cape Town (South Africa), AFRICA</p>
+        </div>
+    </div>
+    
+    <div class="prods">
+        <div class="cont">
+            <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/azure.png') }}">
+            <p>Azure (saf-north), (West US 2)</p>
+        </div>
+        <div class="cont">
+            <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/digitalocean.png') }}">
+            <p>Digitalocean (SFO2), (BLR1)</p>
+        </div>
+        <div class="cont">
+            <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/namecheap.png') }}">
+            <p>Namecheap, adsforafrica.me</p>
+        </div>
+        <div class="cont">
+            <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/nginx.png') }}">
+            <p>nginx (engine-x), reverse proxy, static content</p>
+        </div>
+        <div class="cont">
+            <img src="{{ url_for('static', filename='assets/partners_logo/hosthelp/flask.png') }}">
+            <p>Flask, served behind Gunicorn</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{# 
+    BOILERPLATE TEMPLATE for Ads For Africa
+    
+    This template demonstrates how to properly extend base.html
+    and use all available blocks for consistent page structure.
+    
+    Available blocks from base.html:
+    - title: Page title (appears in browser tab)
+    - extra_css: Additional CSS files or styles
+    - body_start: Content at the beginning of <body> tag
+    - header_title: Override the header title (defaults to "Ads For Africa")
+    - extra_nav: Additional navigation items
+    - content: Main page content
+    - scripts: JavaScript files and scripts
+    
+    Copy this template and customize the blocks as needed.
+#}
+
+{# Set the page title (appears in browser tab) #}
+{% block title %}Page Title - Ads For Africa{% endblock %}
+
+{# Add page-specific CSS files or styles #}
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='page-specific-styles.css') }}">
+    <style>
+        /* Page-specific CSS rules */
+        .page-specific-class {
+            color: #333;
+        }
+    </style>
+{% endblock %}
+
+{# Add content at the beginning of body (before header) #}
+{% block body_start %}
+    <!-- Optional: Add analytics, top banners, etc. -->
+{% endblock %}
+
+{# Override the header title if needed (defaults to "Ads For Africa") #}
+{% block header_title %}Page-Specific Header Title{% endblock %}
+
+{# Add additional navigation items #}
+{% block extra_nav %}
+    <a href="{{ url_for('main.custom_page') }}" {% if request.endpoint == 'main.custom_page' %}class="cur"{% endif %}>Custom Page</a>
+{% endblock %}
+
+{# Main page content #}
+{% block content %}
+    <section class="hero">
+        <h1>Page Heading</h1>
+        <p>Welcome to this page of Ads For Africa.</p>
+    </section>
+    
+    <section class="main-content">
+        <h2>Section Title</h2>
+        <p>Main content goes here...</p>
+        
+        {# Forms should use proper blueprint endpoints #}
+        <form action="{{ url_for('blueprint.route') }}" method="POST">
+            <input type="text" name="field" placeholder="Enter text">
+            <button type="submit">Submit</button>
+        </form>
+        
+        {# Links should use url_for with blueprint endpoints #}
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('auth.login') }}">Login</a>
+        <a href="{{ url_for('ads.register') }}">Register Ad</a>
+    </section>
+    
+    <section class="secondary-content">
+        <h3>Additional Content</h3>
+        <p>More content...</p>
+    </section>
+{% endblock %}
+
+{# Add JavaScript files and scripts #}
+{% block scripts %}
+    <script src="{{ url_for('static', filename='page-specific-script.js') }}"></script>
+    <script>
+        // Page-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+        });
+    </script>
+{% endblock %}

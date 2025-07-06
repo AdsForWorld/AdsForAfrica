@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ads For Africa{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% block body_start %}{% endblock %}
+    
+    <header> 
+        <h2>{% block header_title %}Ads For Africa{% endblock %}</h2> 
+        <div>
+            <a href="{{url_for('main.index')}}" {% if request.endpoint == 'main.index' %}class="cur"{% endif %}>Home</a>
+            <a href="{{url_for('main.about')}}" {% if request.endpoint == 'main.about' %}class="cur"{% endif %}>About Us</a>
+            <a href="{{url_for('main.devlog')}}" {% if request.endpoint == 'main.devlog' %}class="cur"{% endif %}>Devlog</a>
+            <a href="{{url_for('auth.login')}}" {% if request.endpoint == 'auth.login' %}class="cur"{% endif %}>Login</a>
+            <a href="{{url_for('auth.signup')}}" {% if request.endpoint == 'auth.signup' %}class="cur"{% endif %}>Sign up</a>
+            <a href="{{url_for('main.volunteer')}}" {% if request.endpoint == 'main.volunteer' %}class="cur"{% endif %}>Volunteer</a>
+            <a href="{{url_for('main.apply')}}" {% if request.endpoint == 'main.apply' %}class="cur"{% endif %}>Apply</a>
+            <a href="{{url_for('main.ourteam')}}" {% if request.endpoint == 'main.ourteam' %}class="cur"{% endif %}>Our Team</a>
+            {% block extra_nav %}{% endblock %}
+            {% if user %}
+                <p style="right: 0px;">Welcome, {{user}}!</p>
+            {% endif %}
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
