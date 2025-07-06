@@ -51,7 +51,18 @@ else:
 
 
 def create_app(config_name=None):
-    app = Flask(__name__)
+    # Set custom template and static folders to parent directory
+    import os
+    # Get the directory containing the app package
+    app_dir = os.path.dirname(__file__)
+    # Go up one level to the project root
+    project_root = os.path.dirname(app_dir)
+    template_dir = os.path.join(project_root, 'templates')
+    static_dir = os.path.join(project_root, 'static')
+    
+    app = Flask(__name__, 
+                template_folder=template_dir,
+                static_folder=static_dir)
     
     # Configuration
     if config_name is None:
