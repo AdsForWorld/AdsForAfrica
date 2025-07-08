@@ -22,19 +22,19 @@ except:
     ecreds = None
 
 # Create the Flask application using the application factory pattern
-app = create_app()
+application = create_app()
 
 # Make ecreds available globally for the application
-app.config['EMAIL_CREDENTIALS'] = ecreds
+application.config['EMAIL_CREDENTIALS'] = ecreds
 
-@app.shell_context_processor
+@application.shell_context_processor
 def make_shell_context():
     """Make database models available in Flask shell"""
     from app.models import User, Ad
     return {'db': db, 'User': User, 'Ad': Ad}
 
 if __name__ == '__main__':
-    with app.app_context():
+    with application.app_context():
         # Create all database tables
         db.create_all()
         
@@ -44,4 +44,4 @@ if __name__ == '__main__':
         logger.log(logging.INFO, f'[{dateunix()}]: Server started with blueprint architecture')
         
     # Run the application
-    app.run(debug=True)
+    application.run(debug=True)
